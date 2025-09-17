@@ -1,10 +1,10 @@
 object paquete {
   var estaPago = false 
-  method estadoPaquete() {
+  method estaPago() {
     return estaPago
   }
-  method estadoPaquete(_estado) { //el paquete no siempre puede estar pago
-    estaPago = _estado
+  method estaPago(_estaPago) { //el paquete no siempre puede estar pago
+    estaPago = _estaPago
   }
 
   method puedeSerEntregado(mensajero, destino) {
@@ -50,12 +50,14 @@ object neo {
 }
 
 object sara {
-//  var vehiculo = vehiculo.peso()
-  var peso = 0
+  var property vehiculo = moto
+  var property pesoPropio = 0
   const puedeLlamar = false 
-  method peso(_peso,vehiculo) {
-    peso = _peso + vehiculo.peso()
+
+  method peso() {
+    return pesoPropio + vehiculo.peso()
   }
+
   method puedeLlamar() {  //puede recibir llamado
     return puedeLlamar
   }

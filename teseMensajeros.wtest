@@ -1,0 +1,10 @@
+import example.*
+
+describe "" {
+    test "x" {
+        paquete.estaPago(false)
+        assert.notThat(paquete.puedeSerEntregado(neo, laMatrix))
+
+
+    }
+}
