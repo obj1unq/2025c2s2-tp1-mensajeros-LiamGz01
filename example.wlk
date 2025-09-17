@@ -53,13 +53,9 @@ object sara {
 //  var vehiculo = vehiculo.peso()
   var peso = 0
   const puedeLlamar = false 
-  method peso(_peso) {
-    peso = _peso + vehiculo
+  method peso(_peso,vehiculo) {
+    peso = _peso + vehiculo.peso()
   }
-  method vehiculo() {
-    pesoVehiculo =  vehiculo.peso()
-  }
-
   method puedeLlamar() {  //puede recibir llamado
     return puedeLlamar
   }
