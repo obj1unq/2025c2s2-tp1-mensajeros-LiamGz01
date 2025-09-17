@@ -1,54 +1,84 @@
-object george {
-  var pagoEnvio = true
-}
-
-object steven {
-  
-}
-
-object jean {
-  var puedeLlamar = true 
-  var peso = 65  
-}
-
-object neo {
-  var puedeLlamar = true
-  var peso = 0
-  var tieneCredito = false 
-}
-
-object sara {
-  var peso = 0
-  const puedeLlamar = false 
-
-  method peso(_peso) {
-    peso = _peso
-  }
-}
-
 object paquete {
-  var estado = false 
+  var estaPago = false 
   method estadoPaquete() {
-    return estado
+    return estaPago
   }
-  method estadoPaquete(_estado) {
-    estado = _estado
+  method estadoPaquete(_estado) { //el paquete no siempre puede estar pago
+    estaPago = _estado
   }
 
-  method entrega(persona) {
-    return persona
+  method puedeSerEntregado(mensajero, destino) {
+    return estaPago and destino.puedePasar(mensajero)
   }
 }
-
 
 object puendeDeBrooklyn {
-  //deja pasar a todo lo que pese hace 1000 kg
+  method puedePasar(mensajero) {
+    return mensajero.peso() <= 1000 // deja pasar a todo lo que pese hasta 1000 kg
+  }
 }
 
 object laMatrix {
-  method entra() {
-    return// deja entrar a quien puede hacer una llamada
+  method puedePasar(mensajero) {
+    return mensajero.puedeLlamar() // deja entrar a quien puede hacer una llamada
   }
 }
 
-//
+object jean {
+  const puedeLlamar = true 
+  const peso = 65  
+  method puedeLlamar() {  //puede recibir llamado
+    return puedeLlamar
+  }
+  method peso() {
+    return peso
+  }
+}
+
+object neo {
+  const peso = 0
+  var tieneCredito = false
+  method tieneCredito(_credito) {
+    tieneCredito = _credito
+  }
+  method puedeLlamar() { //puede recibir llamado
+    return tieneCredito
+  } 
+  method peso() {
+    peso
+  }
+}
+
+object sara {
+//  var vehiculo = vehiculo.peso()
+  var peso = 0
+  const puedeLlamar = false 
+  method peso(_peso) {
+    peso = _peso + vehiculo
+  }
+  method vehiculo() {
+    pesoVehiculo =  vehiculo.peso()
+  }
+
+  method puedeLlamar() {  //puede recibir llamado
+    return puedeLlamar
+  }
+}
+
+object moto {
+  const peso = 100
+  method peso() {
+    return peso
+  } 
+}
+
+object camion {
+  var acoplados = 0 
+  const peso = 500
+  method cantAcoplados(_acoplados) {
+    acoplados = _acoplados
+  }
+  method peso() {
+    return peso + ( (acoplados * peso) * 0.5 )
+  }
+}
