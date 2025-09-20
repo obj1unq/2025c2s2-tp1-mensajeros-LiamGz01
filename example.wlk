@@ -1,24 +1,20 @@
 object paquete {
-  var estaPago = false 
-  method estaPago() {
-    return estaPago
-  }
-  method estaPago(_estaPago) { //el paquete no siempre puede estar pago
-    estaPago = _estaPago
-  }
+  var property estaPago = false
 
   method puedeSerEntregado(mensajero, destino) {
     return estaPago and destino.puedePasar(mensajero)
   }
 }
 
-object puendeDeBrooklyn {
+object puenteDeBrooklyn {
+
   method puedePasar(mensajero) {
     return mensajero.peso() <= 1000 // deja pasar a todo lo que pese hasta 1000 kg
   }
 }
 
 object laMatrix {
+
   method puedePasar(mensajero) {
     return mensajero.puedeLlamar() // deja entrar a quien puede hacer una llamada
   }
@@ -26,7 +22,8 @@ object laMatrix {
 
 object jean {
   const puedeLlamar = true 
-  const peso = 65  
+  const peso = 65
+
   method puedeLlamar() {  //puede recibir llamado
     return puedeLlamar
   }
@@ -37,46 +34,39 @@ object jean {
 
 object neo {
   const peso = 0
-  var tieneCredito = false
-  method tieneCredito(_credito) {
-    tieneCredito = _credito
-  }
-  method puedeLlamar() { //puede recibir llamado
-    return tieneCredito
-  } 
+  var property tieneCredito = false
+  
   method peso() {
-    peso
+    return peso
   }
 }
 
 object sara {
   var property vehiculo = moto
-  var property pesoPropio = 0
+  var property peso = 0
   const puedeLlamar = false 
 
   method peso() {
-    return pesoPropio + vehiculo.peso()
+    return peso + vehiculo.peso()
   }
-
   method puedeLlamar() {  //puede recibir llamado
     return puedeLlamar
   }
 }
 
 object moto {
-  const peso = 100
+  const peso = 100  // constante ya que el valor siempre es fijo
+  
   method peso() {
     return peso
   } 
 }
 
 object camion {
-  var acoplados = 0 
-  const peso = 500
-  method cantAcoplados(_acoplados) {
-    acoplados = _acoplados
-  }
+  var property acoplados = 0 
+  const peso = 500 // constante ya que el valor siempre es fijo
+  
   method peso() {
-    return peso + ( (acoplados * peso) * 0.5 )
+    return peso + (acoplados * peso )
   }
 }

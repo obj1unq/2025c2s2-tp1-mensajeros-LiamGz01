@@ -1,10 +1,29 @@
 import example.*
 
-describe "" {
-    test "x" {
+describe "mensajeros" {
+    test "El paquete de George que no está pago no puede ser llevado por Neo a la matrix." {
         paquete.estaPago(false)
         assert.notThat(paquete.puedeSerEntregado(neo, laMatrix))
 
+    }
 
+    test "El paquete de George que sí está pago puede ser llevado por Jean a la matrixription" {
+      paquete.estaPago(true)
+      assert.that(paquete.puedeSerEntregado(jean, laMatrix))
+    }
+
+    test "El paquete de George que sí está pago no puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza un camión con un acoplado" {
+      paquete.estaPago(true)
+      sara.peso(70)
+      sara.vehiculo(camion)
+      camion.acoplados(1)
+      assert.notThat(paquete.puedeSerEntregado(sara, puenteDeBrooklyn))
+    }
+    
+    test "La entrega anterior puede hacerse si Sara usa una moto" {
+      paquete.estaPago(true)
+      sara.peso(70)
+      sara.vehiculo(moto)
+      assert.that(paquete.puedeSerEntregado(sara, puenteDeBrooklyn))
     }
 }
